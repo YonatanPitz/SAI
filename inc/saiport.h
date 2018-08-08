@@ -73,7 +73,11 @@ typedef enum _sai_port_oper_status_t
  */
 typedef struct _sai_port_oper_status_notification_t
 {
-    /** Port id */
+    /**
+     * @brief Port id.
+     *
+     * @objects SAI_OBJECT_TYPE_PORT, SAI_OBJECT_TYPE_BRIDGE_PORT, SAI_OBJECT_TYPE_LAG
+     */
     sai_object_id_t port_id;
 
     /** Port operational status */
@@ -396,6 +400,14 @@ typedef enum _sai_port_attr_t
      * @objects SAI_OBJECT_TYPE_INGRESS_PRIORITY_GROUP
      */
     SAI_PORT_ATTR_INGRESS_PRIORITY_GROUP_LIST,
+
+    /**
+     * @brief List of port's lanes eye values
+     *
+     * @type sai_port_eye_values_list_t
+     * @flags READ_ONLY
+     */
+    SAI_PORT_ATTR_EYE_VALUES,
 
     /* READ-WRITE */
 
@@ -1073,6 +1085,21 @@ typedef enum _sai_port_attr_t
      * @objects SAI_OBJECT_TYPE_PORT_POOL
      */
     SAI_PORT_ATTR_PORT_POOL_LIST,
+
+    /**
+     * @brief Port packet transmission enable
+     *
+     * Enable/Disable packet transmission of a port. When packet transmission
+     * is disabled on a port, packets are still subject to regular ingress and egress
+     * admission control to determine the actions on a packet: whether it is
+     * dropped (immediately or after timeout), or whether it is kept in buffers
+     * internal to the switch before packet transmission is enabled on the port.
+     *
+     * @type bool
+     * @flags CREATE_AND_SET
+     * @default true
+     */
+    SAI_PORT_ATTR_PKT_TX_ENABLE,
 
     /**
      * @brief End of attributes

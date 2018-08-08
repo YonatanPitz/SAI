@@ -159,8 +159,8 @@ typedef const char* (*sai_profile_get_value_fn)(
 
 typedef int (*sai_profile_get_next_value_fn)(
         _In_ sai_switch_profile_id_t profile_id,
-        _Out_ const char** variable,
-        _Out_ const char** value);
+        _Out_ const char **variable,
+        _Out_ const char **value);
 
 /**
  * @brief Method table that contains function pointers for services exposed by
@@ -209,7 +209,7 @@ sai_status_t sai_api_initialize(
  */
 sai_status_t sai_api_query(
         _In_ sai_api_t sai_api_id,
-        _Out_ void** api_method_table);
+        _Out_ void **api_method_table);
 
 /**
  * @brief Uninitialize adapter module. SAI functionalities,
